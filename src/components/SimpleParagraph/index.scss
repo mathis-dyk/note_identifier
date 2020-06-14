@@ -1,0 +1,8 @@
+@import '../../index.scss';
+
+.simple-paragraph {
+  text-align: center;
+  width: $width;
+  max-width: $maxwidth;
+  margin: 50px auto;
+}

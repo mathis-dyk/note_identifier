@@ -1,0 +1,53 @@
+@import '../../index.scss';
+
+.intro {
+  height: 100vh;
+  border-bottom: solid 10px $red;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .introContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    width: $width;
+    max-width: $maxwidth;
+
+    .texts {
+      margin: auto;
+      width: 50%;
+
+      h1 {
+        font-size: 72px;
+        font-weight: 900;
+        margin-bottom: 30px;
+      }
+
+      p {
+        max-width: 70%;
+        font-size: 24px;
+        margin-bottom: 30px;
+      }
+
+      button {
+        background: $red;
+        color: $white;
+        border: none;
+        padding: 20px 80px;
+        font-family: $Lora;
+        letter-spacing: 2px;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+    }
+
+    .pianoIllustration {
+      width: 50%;
+    }
+  }
+}

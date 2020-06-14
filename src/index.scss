@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Merriweather:wght@300&display=swap');
+
+// Fonts
+$Lora: 'Lora', serif;
+$Merriweather: 'Merriweather', serif;
+$width: 1024px;
+$maxwidth: 90%;
+
+// Colors
+$red: #FF3C38;
+$orange: #FF8C42;
+$yellow: #FFF275;
+$darkred: #A23E48;
+$greyblue: #6C8EAD;
+$grey: rgb(50, 50, 50);
+$white: rgb(240, 240, 240);
+
+body {
+  background: $white;
+  color: $grey;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: $Lora;
+  color: $grey;
+  font-weight: 700;
+}
+
+p, span, strong, i, a {
+  font-family: $Merriweather;
+  color: $grey;
+}
+
+p, a {
+  font-size: 18px;
+}
+
+h1 {
+  color: $red;
+  font-size: 54px;
+}
+

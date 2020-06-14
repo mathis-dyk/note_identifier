@@ -1,0 +1,83 @@
+@import '../../index.scss';
+
+nav {
+  height: 80px;
+  border-bottom: solid 1px lightgray;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: $white;
+
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: $width;
+    max-width: $maxwidth;
+    margin: auto;
+
+    li {
+      a {
+        text-decoration: none;
+        transition: .1s all ease-out;
+        border-radius: 2px;
+
+        &:hover {
+          color: $red;
+        }
+      }
+
+      .signup {
+        border: solid 1px $red;
+        color: $red;
+
+        &:hover {
+          background: $red;
+          color: $white;
+        }
+      }
+
+      .login {
+        background: $red;
+        border: none;
+        color: $white;
+        border: solid 1px $red;
+
+        &:hover {
+          background: $white;
+          color: $red;
+        }
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+
+      li {
+        margin-right: 30px;
+
+        a {
+          transition: .1s all ease-out;
+        }
+      }
+    }
+
+    .nav-auth {
+      display: flex;
+      align-items: center;
+
+      li {
+        margin-left: 30px;
+
+        a {
+          padding: 8px 30px;
+          transition: .3s all ease-out;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@import '../../index.scss';
+
+.game-card {
+  width: 30%;
+  margin-top: 50px;
+  border: solid 1px $red;
+  border-radius: 2px;
+  box-sizing: border-box;
+
+  img {
+    width: 100%;
+    margin-bottom: 30px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  h2 {
+    margin-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  p {
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 16px;
+    padding-bottom: 30px;
+  }
+
+  a {
+    background: $red;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    margin: auto;
+    font-size: 16px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    border: none;
+    color: $white;
+    width: calc(100% - 60px);
+    box-sizing: content-box;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 2px;
+  }
+}

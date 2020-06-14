@@ -1,0 +1,11 @@
+@import '../../index.scss';
+
+.subtitle {
+  width: $width;
+  max-width: $maxwidth;
+  margin: auto;
+  color: $red;
+  font-size: 32px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
