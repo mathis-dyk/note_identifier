@@ -1,68 +1,43 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+L'idée générale du projet viens d'un jour où je trouvais que j'étais trop lent pour lire mes partitions au piano.
+Je me suis alors demandé s'il n'existait pas un "serious game" pour s'exercer. Effectivement, il en existait un, mais en mode solo, uniquement avec les notes anglaises (A, B, C, etc...), et archi moche.
+J'ai donc décidé de créer mon propre jeu.
 
-In the project directory, you can run:
+## Projet
 
-### `yarn start`
+Le projet serait de créer plusieurs minis-jeux. En fonction de notre résultat à chaque jeu, on gagne des points, et on peut voir notre position sur chaque jeu dans un classement général.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Les jeux
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Jeu numéro 1 : Trouver la note qui apparaît à l'écran sur une partition, le + rapidement possible. On clique alors sur le bouton qui contient la note. (Notes en français)
 
-### `yarn test`
+Jeu numéro 2 : Même principe, mais notes en anglais
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Jeu numéro 3 : Les notes s'affichent sur la partition, il faut les jouer le plus rapidement possible sur un clavier midi qu'on a branché. Des accords peuvent arriver.
 
-### `yarn build`
+Jeu numéro 4 : Level supérieur, on affiche des accords
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Jeu numéro 5 : L'utilisateur doit jouer les accords
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Tech
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Les besoins sont : 
 
-### `yarn eject`
+- Créer un système de register & auth (mongoDB ?)
+- Créer un système qui détecte la note appuyée sur le piano
+- Créer un système qui affiche des notes
+- Créer un système de bouton qui renvoi une note
+- Créer chacun des minis jeux
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Technos utilisées
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+React + MongoDB
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Pourquoi React ?** Pour une question de rapidité et facilité. J'ai commencé le projet très tard. J'avais de base créé un boilerplate, mais le projet n'était pas hyper intéressant techniquement.
+Bim, gros virage à 180degrés, et 5 jours avant la date de rendu, changement de projet.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## TODO :
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Passer ce README en anglais
+- Tout
