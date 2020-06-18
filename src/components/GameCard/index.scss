@@ -6,6 +6,7 @@
   border: solid 1px $red;
   border-radius: 2px;
   box-sizing: border-box;
+  padding-bottom: 30px;
 
   img {
     width: 100%;
@@ -20,11 +21,15 @@
     padding-right: 30px;
   }
 
-  p {
+  p, h3 {
     padding-left: 30px;
     padding-right: 30px;
     font-size: 16px;
     padding-bottom: 30px;
+  }
+
+  h3 {
+    padding-bottom: 0
   }
 
   a {

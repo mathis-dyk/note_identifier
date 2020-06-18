@@ -41,9 +41,9 @@ const GameList = () => {
       <div className="game-list_cards">
         {
           games.map((game) => {
-            const { title, description, slug } = game
+            const { title, description, slug, _id } = game
             return (
-             <GameCard title={title} key={slug} isAuth={authTokens ? true : false} description={description} slug={slug} />
+             <GameCard title={title} id={_id} key={slug} isAuth={authTokens ? true : false} description={description} slug={slug} />
             )
           })
         }
