@@ -10,8 +10,8 @@
   img {
     width: 100%;
     margin-bottom: 30px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
   }
 
   h2 {
@@ -38,10 +38,9 @@
     margin-left: 30px;
     border: none;
     color: $white;
-    width: calc(100% - 60px);
+    width: auto;
     box-sizing: content-box;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 20px;
     border-radius: 2px;
   }
 }

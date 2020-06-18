@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './index.scss'
-import { Link } from 'react-router-dom'
 
-const GameCard = () => {
+const GameCard = ({ title, description, slug, isAuth }) => {
+  const [getBestScore, setGetBestScore] = useState(false)
+  const [bestScore, setBestScore] = useState(0)
+  useEffect(() => {
+    
+  }, [])
+
   return (
     <div className="game-card">
       <img src="https://via.placeholder.com/300x150" alt="" />
-      <h2>Game card</h2>
-      <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis luctus justo id ex posuere, et tempor lorem vehicula. Cras eu venenatis diam. Donec in quam.</p>
-      <a href="/games/find-the-note-french">Play this game</a>
+      <h2>{ title }</h2>
+      <p>{ description }</p>
+      <a href={`/games/${slug}`}>Play this game</a>
+      { isAuth && !getBestScore && <p>Tu n'as pas encore joué à ce jeu</p> }
+      { isAuth && getBestScore && <p>Ton meilleur score :</p> }
     </div>
   )
 }

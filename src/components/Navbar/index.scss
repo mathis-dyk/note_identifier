@@ -20,7 +20,7 @@ nav {
     margin: auto;
 
     li {
-      a {
+      a, button {
         text-decoration: none;
         transition: .1s all ease-out;
         border-radius: 2px;
@@ -73,9 +73,23 @@ nav {
       li {
         margin-left: 30px;
 
-        a {
+        a, button {
           padding: 8px 30px;
           transition: .3s all ease-out;
+        }
+      }
+
+      button {
+        background: $red;
+        color: white;
+        display: inline-block;
+        border: solid 1px $red;
+        font-size: 18px;
+        font-family: $Merriweather;
+
+        &:hover {
+          color: $red;
+          background: $white;
         }
       }
     }
