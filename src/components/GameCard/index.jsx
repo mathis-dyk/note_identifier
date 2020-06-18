@@ -9,23 +9,21 @@ const GameCard = ({ title, description, slug, isAuth, id }) => {
   const [userId] = useState(localStorage.getItem("userid") || "")
 
   useEffect(() => {
-    fetch(`http://localhost:3000/scores/${id}/${JSON.parse(userId)}`)
+    fetch(`${process.env.REACT_APP_BACK_URL}scores/${id}/${JSON.parse(userId)}`)
     .then((response) => response.json())
     .then((response) => {
       if (response !== null) {
         setYourBestScore(response)
         setGetYourBestScore(true)
-        console.log(response)
       }
     })
 
-    fetch(`http://localhost:3000/games/${id}/bestscore`)
+    fetch(`${process.env.REACT_APP_BACK_URL}games/${id}/bestscore`)
     .then((response) => response.json())
     .then((response) => {
       if (response.length != 0) {
         setBestScore(response[0])
         setGetBestScore(true)
-        console.log(response[0])
       }
     })
   }, [])

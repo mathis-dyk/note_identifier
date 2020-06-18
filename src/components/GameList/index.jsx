@@ -9,30 +9,9 @@ const GameList = () => {
   const { authTokens, setAuthTokens } = useAuth();
 
   useEffect(() => {
-    fetch('http://localhost:3000/games/')
+    fetch(${process.env.REACT_APP_BACK_URL}games/')
     .then((response) => response.json())
     .then((response) => setGames(response))
-
-
-    // const getMe = () => {
-    //   fetch(`${process.env.REACT_APP_BACK_URL}auth/me`, {
-    //     method: 'post',
-    //     headers: {'Content-Type': 'application/json'},
-    //     body: JSON.stringify({
-    //       "userid": JSON.parse(localStorage.getItem('userid'))
-    //     })
-    //   })
-    //   .then((response) => response.json())
-    //   .then((response) => {
-    //     console.log(response)
-    //   })
-    //   .then((error) => console.log(error))
-    // }
-
-    // if(authTokens) {
-    //   getMe()
-    // }
-    
   }, [])
 
   return (
@@ -43,7 +22,7 @@ const GameList = () => {
           games.map((game) => {
             const { title, description, slug, _id } = game
             return (
-             <GameCard title={title} id={_id} key={slug} isAuth={authTokens ? true : false} description={description} slug={slug} />
+              <GameCard title={title} id={_id} key={slug} isAuth={authTokens ? true : false} description={description} slug={slug} />
             )
           })
         }

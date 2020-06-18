@@ -27,7 +27,7 @@ const Login = (props) => {
       setAuthTokens(response.token, response.userId);
       setLoggedIn(true);
     })
-    .then((error) => console.log(error))
+    .then((error) => console.error(error))
   }
 
   if (isLoggedIn) {
