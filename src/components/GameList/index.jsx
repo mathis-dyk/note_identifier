@@ -9,7 +9,7 @@ const GameList = () => {
   const { authTokens, setAuthTokens } = useAuth();
 
   useEffect(() => {
-    fetch(${process.env.REACT_APP_BACK_URL}games/')
+    fetch(`${process.env.REACT_APP_BACK_URL}games/`)
     .then((response) => response.json())
     .then((response) => setGames(response))
   }, [])
