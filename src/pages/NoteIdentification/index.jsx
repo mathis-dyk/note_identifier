@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './index.scss'
-import DoClefDeSol from 'assets/img/note-do-clef-de-sol.png'
-import { notesCorrespondance, englishNotes, frenchNotes } from "data/notes";
+// import DoClefDeSol from 'assets/img/note-do-clef-de-sol.png'
+// import { notesCorrespondance, englishNotes, frenchNotes } from "data/notes";
 import { getRandomNoteFr } from 'tools'
 
 const NoteIdentification = () => {
@@ -12,6 +12,7 @@ const NoteIdentification = () => {
   const [currentNote, setCurrentNote] = useState(null)
   const [intervalTimer, setIntervalTimer] = useState(null)
   const [erreurs, setErreurs] = useState(0)
+  const [gameId] = useState("5ee9229928c6ec11ae23f77f");
 
   const startGame = () => {
     setIsStarted(true)
@@ -21,11 +22,37 @@ const NoteIdentification = () => {
     }, 100))
   }
 
+  const setBestScore = (finalScore) => {
+    console.log("set best score")
+    fetch(`${process.env.REACT_APP_BACK_URL}scores`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        gameId: gameId,
+        userId: JSON.parse(localStorage.getItem("userid")),
+        value: finalScore,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => console.log(response))
+      .catch((error) => console.error(error));
+  }
+
   const winGame = () => {
     clearInterval(intervalTimer)
     setIsFinished(true)
     const finalScore = Math.round(((score / timer) * 100000) - (erreurs * 1000))
     setScore(finalScore)
+
+    fetch(`${process.env.REACT_APP_BACK_URL}scores/${gameId}/${JSON.parse(localStorage.getItem('userid'))}`)
+    .then((response) => response.json())
+    .then((response) => {
+      if (response === null || response.value < finalScore) {
+        setBestScore(finalScore)
+      }
+    });
   }
 
   const sendAnswer = (note) => {

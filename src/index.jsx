@@ -11,6 +11,7 @@ import './reset.scss'
 import NoteIdentification from './pages/NoteIdentification';
 import { AuthContext } from "./context/auth";
 import Admin from 'pages/Admin'
+import Profile from 'pages/Profile'
 import PrivateRoute from 'components/PrivateRoute'
 
 const App = (props) => {
@@ -34,6 +35,7 @@ const App = (props) => {
           <Route path="/games" component={Games} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
+          <Route path="/profile" component={Profile} />
           <PrivateRoute path="/admin" component={Admin} />
           <Route path="/" component={Home} />
         </Switch>

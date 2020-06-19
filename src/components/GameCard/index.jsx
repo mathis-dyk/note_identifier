@@ -18,28 +18,35 @@ const GameCard = ({ title, description, slug, isAuth, id }) => {
       }
     })
 
-    fetch(`${process.env.REACT_APP_BACK_URL}games/${id}/bestscore`)
-    .then((response) => response.json())
-    .then((response) => {
-      if (response.length != 0) {
-        setBestScore(response[0])
-        setGetBestScore(true)
-      }
-    })
-  }, [])
+    fetch(`${process.env.REACT_APP_BACK_URL}games/${id}/bestscore/`)
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.length !== 0) {
+          setBestScore(response[0]);
+          setGetBestScore(true);
+        }
+      });
+  }, [id, userId])
 
   return (
     <div className="game-card">
       <img src="https://via.placeholder.com/300x150" alt="" />
-      <h2>{ title }</h2>
-      <p>{ description }</p>
+      <h2>{title}</h2>
+      <p>{description}</p>
       <a href={`/games/${slug}`}>Play this game</a>
-      { !getBestScore && <h3>Sois le premier à enregistrer un score !</h3> }
-      { getBestScore && <h3>Record : {bestScore.value}</h3> }
-      { isAuth && !getYourBestScore && <p>Tu n'as pas encore joué à ce jeu</p> }
-      { isAuth && getYourBestScore && <p>Ton meilleur score : {yourBestScore.value}</p> }
+      {!getBestScore && <h3>Sois le premier à enregistrer un score !</h3>}
+      {getBestScore && <h3>Record : {bestScore.value}</h3>}
+      {isAuth && getYourBestScore === getBestScore && getYourBestScore && getYourBestScore !== 0 && (
+        <p>Tu détiens le meilleur score !</p>
+      )}
+      {isAuth && !getYourBestScore && getYourBestScore !== getBestScore && (
+        <p>Tu n'as pas encore joué à ce jeu</p>
+      )}
+      {isAuth && getYourBestScore && getYourBestScore !== getBestScore && (
+        <p>Ton meilleur score : {yourBestScore.value}</p>
+      )}
     </div>
-  )
+  );
 }
 
 export default GameCard

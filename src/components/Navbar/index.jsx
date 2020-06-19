@@ -40,6 +40,9 @@ const Navbar = () => {
         {
           authTokens && (
             <div className="nav-auth">
+              <li>
+                <Link to="/profile" className="profile signup">Profile</Link>
+              </li>
               <li><button onClick={logOut}>Log Out</button></li>
             </div>
           )

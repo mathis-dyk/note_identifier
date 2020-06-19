@@ -6,7 +6,7 @@ import { useAuth } from "context/auth";
 
 const GameList = () => {
   const [games, setGames] = useState([])
-  const { authTokens, setAuthTokens } = useAuth();
+  const { authTokens } = useAuth();
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_BACK_URL}games/`)

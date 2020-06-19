@@ -4,10 +4,10 @@ import useInput from 'hooks/useInput'
 import { handleErrors } from 'tools'
 
 const Signup = () => {
-  const { value:Name, bind:bindName, reset:resetName } = useInput('');
-  const { value:Email, bind:bindEmail, reset:resetEmail } = useInput('');
-  const { value:Password, bind:bindPassword, reset:resetPassword } = useInput('');
-  const { value:PasswordConfirm, bind:bindPasswordConfirm, reset:resetPasswordConfirm } = useInput('');
+  const { value:Name, bind:bindName } = useInput('');
+  const { value:Email, bind:bindEmail } = useInput('');
+  const { value:Password, bind:bindPassword } = useInput('');
+  const { value:PasswordConfirm, bind:bindPasswordConfirm } = useInput('');
   const [error, setError] = useState('')
 
   const handleSubmit = (e) => {
