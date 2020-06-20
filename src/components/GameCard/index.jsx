@@ -9,14 +9,18 @@ const GameCard = ({ title, description, slug, isAuth, id }) => {
   const [userId] = useState(localStorage.getItem("userid") || "")
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BACK_URL}scores/${id}/${JSON.parse(userId)}`)
-    .then((response) => response.json())
-    .then((response) => {
-      if (response !== null) {
-        setYourBestScore(response)
-        setGetYourBestScore(true)
-      }
-    })
+    if (isAuth) {
+      fetch(
+        `${process.env.REACT_APP_BACK_URL}scores/${id}/${JSON.parse(userId)}`
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          if (response !== null) {
+            setYourBestScore(response);
+            setGetYourBestScore(true);
+          }
+        });
+    }
 
     fetch(`${process.env.REACT_APP_BACK_URL}games/${id}/bestscore/`)
       .then((response) => response.json())
@@ -26,7 +30,7 @@ const GameCard = ({ title, description, slug, isAuth, id }) => {
           setGetBestScore(true);
         }
       });
-  }, [id, userId])
+  }, [id])
 
   return (
     <div className="game-card">
@@ -36,13 +40,14 @@ const GameCard = ({ title, description, slug, isAuth, id }) => {
       <a href={`/games/${slug}`}>Play this game</a>
       {!getBestScore && <h3>Sois le premier à enregistrer un score !</h3>}
       {getBestScore && <h3>Record : {bestScore.value}</h3>}
-      {isAuth && getYourBestScore === getBestScore && getYourBestScore && getYourBestScore !== 0 && (
-        <p>Tu détiens le meilleur score !</p>
-      )}
-      {isAuth && !getYourBestScore && getYourBestScore !== getBestScore && (
+      {isAuth &&
+        (yourBestScore === bestScore) &&
+        yourBestScore &&
+        (yourBestScore !== 0) && <p>Tu détiens le meilleur score !</p>}
+      {isAuth && !yourBestScore && yourBestScore !== getBestScore && (
         <p>Tu n'as pas encore joué à ce jeu</p>
       )}
-      {isAuth && getYourBestScore && getYourBestScore !== getBestScore && (
+      {isAuth && yourBestScore !== 0 && (yourBestScore !== getBestScore) && (
         <p>Ton meilleur score : {yourBestScore.value}</p>
       )}
     </div>

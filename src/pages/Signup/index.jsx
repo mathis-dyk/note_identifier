@@ -1,36 +1,48 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './index.scss'
 import useInput from 'hooks/useInput'
-import { handleErrors } from 'tools'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Signup = () => {
-  const { value:Name, bind:bindName } = useInput('');
-  const { value:Email, bind:bindEmail } = useInput('');
-  const { value:Password, bind:bindPassword } = useInput('');
-  const { value:PasswordConfirm, bind:bindPasswordConfirm } = useInput('');
-  const [error, setError] = useState('')
+const Signup = (props) => {
+  const { value:Name, bind:bindName, reset: resetName } = useInput('');
+  const { value:Email, bind:bindEmail, reset: resetEmail } = useInput('');
+  const { value:Password, bind:bindPassword, reset: resetPassword } = useInput('');
+  const { value:PasswordConfirm, bind:bindPasswordConfirm, reset: resetPasswordConfirm } = useInput('');
+
+  const errorToast = (message) => toast.error(message);
+  const successToast = (message) => toast.success(message);
 
   const handleSubmit = (e) => {
       e.preventDefault();
 
       if (Password !== PasswordConfirm) {
-        setError('Le mot de passe ainsi que la confirmation du mot de passe ne sont pas identiques.')
+        errorToast("Le mot de passe ainsi que la confirmation du mot de passe ne sont pas identiques.");
         return
       }
 
       fetch(`${process.env.REACT_APP_BACK_URL}auth/register`, {
-        method: 'post',
-        headers: {'Content-Type': 'application/json'},
+        method: "post",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          "name" : Name,
-          "email" : Email,
-          "password" : Password
-        })
+          name: Name,
+          email: Email,
+          password: Password,
+        }),
       })
-      .then(handleErrors)
-      .then((response) => console.log(response))
-      .catch((error) => console.error(error))
-  }
+        .then((response) => response.json())
+        .then((response) => {
+          if (response.err) {
+            errorToast(response.err)
+          } else {
+            successToast("You are well suscribed")
+            resetEmail()
+            resetName()
+            resetPassword()
+            resetPasswordConfirm()
+          }
+        })
+    }
 
   return (
     <section className="signup">
@@ -39,13 +51,19 @@ const Signup = () => {
         <input placeholder="Name" type="text" {...bindName} />
         <input placeholder="Mail" type="mail" {...bindEmail} />
         <input placeholder="Password" type="password" {...bindPassword} />
-        <input placeholder="Confirm Password" type="password" {...bindPasswordConfirm} />
+        <input
+          placeholder="Confirm Password"
+          type="password"
+          {...bindPasswordConfirm}
+        />
         <input type="submit" />
-        <p className="error">{ error }</p>
       </form>
-      <p>Vous avez déjà un compte ? <span>Connectez vous</span></p>
+      <p>
+        Vous avez déjà un compte ? <span>Connectez vous</span>
+      </p>
+      <ToastContainer />
     </section>
-  )
+  );
 }
 
 export default Signup

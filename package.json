@@ -12,6 +12,8 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-toastify": "^6.0.5",
+    "showdown": "^1.9.1",
     "tone": "^14.7.7",
     "webmidi": "^2.5.1"
   },

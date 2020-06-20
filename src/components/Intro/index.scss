@@ -28,12 +28,12 @@
       }
 
       p {
-        max-width: 70%;
-        font-size: 24px;
+        max-width: 90%;
+        font-size: 21px;
         margin-bottom: 30px;
       }
 
-      button {
+      button, a {
         background: $red;
         color: $white;
         border: none;
@@ -43,6 +43,8 @@
         font-weight: bold;
         text-transform: uppercase;
         cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
       }
     }
 

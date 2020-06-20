@@ -22,31 +22,38 @@ const Navbar = () => {
           <li>
             <Link to="/games">Games</Link>
           </li>
+          <li>
+            <Link to="/lessons">Lessons</Link>
+          </li>
         </div>
 
-        {
-          !authTokens && (
-            <div className="nav-auth">
-              <li>
-                <Link to="/signup" className="signup">Sign up</Link>
-              </li>
-              <li>
-                <Link to="/login" className="login">Login</Link>
-              </li>
-            </div>
-          )
-        }
+        {!authTokens && (
+          <div className="nav-auth">
+            <li>
+              <Link to="/signup" className="signup">
+                Sign up
+              </Link>
+            </li>
+            <li>
+              <Link to="/login" className="login">
+                Login
+              </Link>
+            </li>
+          </div>
+        )}
 
-        {
-          authTokens && (
-            <div className="nav-auth">
-              <li>
-                <Link to="/profile" className="profile signup">Profile</Link>
-              </li>
-              <li><button onClick={logOut}>Log Out</button></li>
-            </div>
-          )
-        }
+        {authTokens && (
+          <div className="nav-auth">
+            <li>
+              <Link to="/profile" className="profile signup">
+                Profile
+              </Link>
+            </li>
+            <li>
+              <button onClick={logOut}>Log Out</button>
+            </li>
+          </div>
+        )}
       </ul>
     </nav>
   );

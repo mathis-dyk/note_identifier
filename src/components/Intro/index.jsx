@@ -1,19 +1,19 @@
 import React from 'react'
 import './index.scss'
-import piano from 'assets/img/piano.svg'
+import { Link } from 'react-router-dom'
+import piano from "assets/img/undraw_more_music_w70e.svg";
 
 const Intro = () => {
   return (
     <section className="intro">
       <div className="introContent">
         <div className="texts">
-          <h1>My intro text</h1>
+          <h1>Galabop</h1>
           <p>
-            Enim adipisicing id fugiat incididunt velit adipisicing laboris sunt
-            Lorem occaecat anim exercitation enim. Magna est fugiat irure Lorem
-            occaecat eiusmod.
+            Train yourself to theorical music sheet analysis. Learn to identification notes, find key signature or even create chords. Each of these exercices got a score
+            system. Find answer fasters as possible and get the best score !
           </p>
-          <button>Watch this</button>
+          <Link to="/login">Discover games</Link>
         </div>
         <img className="pianoIllustration" src={piano} alt="" />
       </div>

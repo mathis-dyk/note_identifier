@@ -26,9 +26,9 @@ export const getRandomNoteFr = () => {
 //   "si": "do",
 // }
 
-export const handleErrors = (response) => {
-    if (!response.ok) {
-        throw Error(response.statusText);
-    }
-    return response;
-}
+// export const handleErrors = (response) => {
+//     if (!response.ok) {
+//         throw Error(response);
+//     }
+//     return response;
+// }

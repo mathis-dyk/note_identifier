@@ -3,6 +3,8 @@ import './index.scss'
 import { useAuth } from 'context/auth'
 import { Redirect } from 'react-router-dom'
 import useInput from 'hooks/useInput'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = (props) => {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -12,22 +14,27 @@ const Login = (props) => {
   const { value:userName, bind:bindUserName } = useInput('');
   const { value:password, bind:bindPassword } = useInput('');
 
+  const errorToast = (message) => toast.error(message);
+
   const postLogin = (e) => {
     e.preventDefault()
     fetch(`${process.env.REACT_APP_BACK_URL}auth/login`, {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
+      method: "post",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        "email" : userName,
-        "password" : password
+        email: userName,
+        password: password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (!response.err) {
+          setAuthTokens(response.token, response.userId);
+          setLoggedIn(true);
+        } else {
+          errorToast(response.err);
+        }
       })
-    })
-    .then((response) => response.json())
-    .then((response) => {
-      setAuthTokens(response.token, response.userId);
-      setLoggedIn(true);
-    })
-    .then((error) => console.error(error))
   }
 
   if (isLoggedIn) {
@@ -51,6 +58,7 @@ const Login = (props) => {
         <button onClick={postLogin}>Sign In</button>
       </form>
       { isError && <p>The username or password provided were incorrect!</p> }
+      <ToastContainer />
     </section>
   )
 }
